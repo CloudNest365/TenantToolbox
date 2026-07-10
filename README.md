@@ -5,6 +5,8 @@
 **A gallery of small, sharply-scoped PowerShell cmdlets for Microsoft 365 tenant administration.**
 Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame and beautiful, interactive HTML reports.
 
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/v/TenantToolbox?logo=powershell&logoColor=white&label=PSGallery)](https://www.powershellgallery.com/packages/TenantToolbox)
+[![Downloads](https://img.shields.io/powershellgallery/dt/TenantToolbox?label=downloads)](https://www.powershellgallery.com/packages/TenantToolbox)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](LICENSE)
 [![PowerShell](https://img.shields.io/badge/PowerShell-7%2B-5391FE.svg?logo=powershell&logoColor=white)](https://learn.microsoft.com/powershell/)
 [![Microsoft Graph](https://img.shields.io/badge/Microsoft-Graph-0078D4.svg?logo=microsoft&logoColor=white)](https://learn.microsoft.com/graph/)
@@ -89,10 +91,11 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 
 <sub>Also included: BitLocker coverage, mailbox sizes, SharePoint sharing. Remediation: `Disable-M365ExternalForwarding`, `Revoke-M365AppConsent` (both `-WhatIf`).</sub>
 
-## 📦 Requirements
+## 📦 Install
 
 ```powershell
-Install-Module Microsoft.Graph      -Scope CurrentUser   # required
+Install-Module TenantToolbox        -Scope CurrentUser   # from the PowerShell Gallery
+Install-Module Microsoft.Graph      -Scope CurrentUser   # required dependency
 Install-Module ImportExcel          -Scope CurrentUser   # optional, for -Excel
 ```
 
@@ -101,8 +104,7 @@ PowerShell 7+.
 ## 🚀 Getting started
 
 ```powershell
-git clone https://github.com/CloudNest365/TenantToolbox.git
-Import-Module ./TenantToolbox/TenantToolbox.psd1
+Import-Module TenantToolbox
 
 # Sign in (most robust in the VS Code terminal):
 Connect-TenantToolbox -UseDeviceCode -LogPath ./tenanttoolbox.log
