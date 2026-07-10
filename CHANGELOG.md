@@ -4,6 +4,19 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
+## [Unreleased]
+
+### Added — small admin reports
+- `Export-M365TeamsReport` – Microsoft Teams with owner/member/guest counts and visibility.
+- `Export-M365DomainReport` – domains (verified, default, auth type).
+- `Export-M365ServiceHealthReport` – current M365 service issues/incidents.
+- `Export-M365MessageCenterReport` – Message Center announcements & action-required items.
+- `Export-M365PasswordPolicyReport` – password findings (never expires, weak, old).
+- `Export-M365RegisteredDeviceReport` – Entra-registered/joined devices.
+- `Export-M365DistributionListReport` – distribution lists (with empty-list flag).
+- `Export-M365SharedMailboxReport` – shared mailboxes & Full Access delegates (Exchange Online).
+- New default scopes: `ServiceHealth.Read.All`, `ServiceMessage.Read.All`.
+
 ## [0.3.0] – 2026-07-10
 
 ### Added — security detection

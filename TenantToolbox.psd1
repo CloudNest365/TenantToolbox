@@ -50,7 +50,15 @@
         'Export-M365AdminRoleReport',
         'Export-M365GuestReport',
         'Export-M365LicenseReport',
-        'Export-M365GroupReport'
+        'Export-M365GroupReport',
+        'Export-M365TeamsReport',
+        'Export-M365DomainReport',
+        'Export-M365ServiceHealthReport',
+        'Export-M365MessageCenterReport',
+        'Export-M365PasswordPolicyReport',
+        'Export-M365RegisteredDeviceReport',
+        'Export-M365DistributionListReport',
+        'Export-M365SharedMailboxReport'
     )
     CmdletsToExport   = @()
     VariablesToExport = @()

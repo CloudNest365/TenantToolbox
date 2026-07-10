@@ -65,7 +65,17 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 |---|---|
 | [![License Assignment](assets/license.png)](assets/license.png) | [![Groups](assets/group.png)](assets/group.png) |
 
-<sub>Screenshots use demo data.</sub>
+### Admin day-to-day
+
+| Microsoft Teams | Service Health |
+|---|---|
+| [![Teams](assets/teams.png)](assets/teams.png) | [![Service Health](assets/servicehealth.png)](assets/servicehealth.png) |
+
+**Message Center** — upcoming changes & action-required items:
+
+[![Message Center](assets/messagecenter.png)](assets/messagecenter.png)
+
+<sub>Screenshots use demo data. Also included: domains, password policy, registered devices, distribution lists, shared mailboxes.</sub>
 
 ## 📦 Requirements
 
@@ -126,6 +136,14 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Get-M365Guest` / `Export-M365GuestReport` | Guest accounts: domain, state, last sign-in | no |
 | `Get-M365License` / `Export-M365LicenseReport` | License assignment: total / assigned / available | no |
 | `Get-M365Group` / `Export-M365GroupReport` | Groups & Teams: type, owners, orphans | no |
+| `Export-M365TeamsReport` | Microsoft Teams: owners, members, guests, visibility | no |
+| `Export-M365DomainReport` | Domains: verified, default, auth type | no |
+| `Export-M365ServiceHealthReport` | Current M365 service issues/incidents | no |
+| `Export-M365MessageCenterReport` | Message Center announcements & action-required | no |
+| `Export-M365PasswordPolicyReport` | Password findings (never expires, weak, old) | no |
+| `Export-M365RegisteredDeviceReport` | Entra-registered/joined devices | no |
+| `Export-M365DistributionListReport` | Distribution lists & empty lists | no |
+| `Export-M365SharedMailboxReport` | Shared mailboxes & Full Access delegates (Exchange) | no |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 

@@ -44,7 +44,9 @@ function Connect-TenantToolbox {
             'DeviceManagementManagedDevices.ReadWrite.All',
             'DeviceManagementApps.Read.All',
             'MailboxSettings.Read',
-            'IdentityRiskyUser.Read.All'
+            'IdentityRiskyUser.Read.All',
+            'ServiceHealth.Read.All',
+            'ServiceMessage.Read.All'
         ),
 
         [string]$LogPath,
