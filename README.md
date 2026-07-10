@@ -37,6 +37,10 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 |---|---|
 | [![PIM Report](assets/pim.png)](assets/pim.png) | [![Intune Device Report](assets/intune.png)](assets/intune.png) |
 
+**Intune Software Inventory** — apps, versions and device counts:
+
+[![Intune Software Inventory](assets/intuneapp.png)](assets/intuneapp.png)
+
 <sub>Screenshots use demo data.</sub>
 
 ## 📦 Requirements
@@ -84,6 +88,8 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Export-M365PimReport` | Privileged roles: permanent vs. eligible vs. activated | no |
 | `Get-M365IntuneDevice` | Intune-managed devices (objects) | no |
 | `Export-M365IntuneDeviceReport` | Intune devices: compliance, sync, encryption | no |
+| `Get-M365IntuneApp` | Detected software inventory (objects) | no |
+| `Export-M365IntuneAppReport` | Software inventory: app, version, device count | no |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 

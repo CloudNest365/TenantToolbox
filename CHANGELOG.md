@@ -8,6 +8,7 @@ versioning per [SemVer](https://semver.org/).
 
 ### Added
 - `Get-M365IntuneDevice` + `Export-M365IntuneDeviceReport` – Intune managed devices with compliance, sync and encryption status (#6).
+- `Get-M365IntuneApp` + `Export-M365IntuneAppReport` – software inventory (detected apps) with version and device count.
 - `Get-M365TenantSummary` – colored console overview of the tenant's security posture (#2).
 - `Remove-M365StaleGuests` – find and remove inactive guest accounts, with `-WhatIf` (#1).
 - `Connect-TenantToolbox`: certificate/app-only auth (`-ClientId` / `-TenantId` / `-CertificateThumbprint`) for unattended runs (#4).
