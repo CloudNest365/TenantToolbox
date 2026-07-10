@@ -45,6 +45,16 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 
 [![Per-device app drilldown](assets/deviceapp.png)](assets/deviceapp.png)
 
+### Security detection
+
+| External Mail Forwarding | Enterprise Apps & Consent |
+|---|---|
+| [![External Mail Forwarding](assets/mailfwd.png)](assets/mailfwd.png) | [![Enterprise Apps](assets/entapp.png)](assets/entapp.png) |
+
+**Risky Users** (Identity Protection):
+
+[![Risky Users](assets/risky.png)](assets/risky.png)
+
 <sub>Screenshots use demo data.</sub>
 
 ## 📦 Requirements
@@ -99,6 +109,9 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Get-M365IntuneDeviceApp` | Apps installed on a single device (objects) | no |
 | `Export-M365IntuneDeviceAppReport` | Per-device app drilldown | no |
 | `Remove-M365StaleDevices` | Find & delete stale Intune devices | **yes** (`-WhatIf`) |
+| `Get-M365MailForwarding` / `Export-M365MailForwardingReport` | Inbox rules forwarding externally (compromise signal) | no |
+| `Get-M365EnterpriseApp` / `Export-M365EnterpriseAppReport` | OAuth consents & risky app scopes | no |
+| `Get-M365RiskyUser` / `Export-M365RiskyUsersReport` | Identity Protection risky users (P2) | no |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 

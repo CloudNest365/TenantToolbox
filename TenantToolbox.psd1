@@ -23,6 +23,9 @@
         'Get-M365IntuneApp',
         'Get-M365IntuneAppDeployment',
         'Get-M365IntuneDeviceApp',
+        'Get-M365RiskyUser',
+        'Get-M365EnterpriseApp',
+        'Get-M365MailForwarding',
         'Invoke-M365Offboarding',
         'Remove-M365StaleGuests',
         'Remove-M365StaleDevices',
@@ -36,7 +39,10 @@
         'Export-M365IntuneDeviceReport',
         'Export-M365IntuneAppReport',
         'Export-M365IntuneAppDeploymentReport',
-        'Export-M365IntuneDeviceAppReport'
+        'Export-M365IntuneDeviceAppReport',
+        'Export-M365RiskyUsersReport',
+        'Export-M365EnterpriseAppReport',
+        'Export-M365MailForwardingReport'
     )
     CmdletsToExport   = @()
     VariablesToExport = @()

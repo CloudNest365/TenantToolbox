@@ -4,6 +4,14 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
+## [Unreleased]
+
+### Added — security detection
+- `Get-M365MailForwarding` + `Export-M365MailForwardingReport` – inbox rules forwarding mail externally (account-compromise signal).
+- `Get-M365EnterpriseApp` + `Export-M365EnterpriseAppReport` – OAuth consents with risky delegated scopes highlighted.
+- `Get-M365RiskyUser` + `Export-M365RiskyUsersReport` – Entra Identity Protection risky users (P2).
+- New default scopes: `MailboxSettings.Read`, `IdentityRiskyUser.Read.All`.
+
 ## [0.2.0] – 2026-07-10
 
 ### Added — Intune suite
