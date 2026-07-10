@@ -4,6 +4,24 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
+## [0.5.0] – 2026-07-10
+
+### Added — new reports
+- `Export-M365SignInReport` – recent sign-ins flagged failed / legacy-auth / risky.
+- `Export-M365AutopilotReport` – Windows Autopilot devices and profile assignment.
+- `Export-M365DynamicGroupReport` – dynamic groups and their membership rules.
+- `Export-M365BitLockerReport` – BitLocker recovery-key escrow coverage.
+- `Export-M365MailboxSizeReport` – mailbox sizes and item counts (Exchange).
+- `Export-M365SharingReport` – SharePoint external sharing posture (SPO).
+
+### Added — remediation (with `-WhatIf`)
+- `Disable-M365ExternalForwarding` – disable external inbox-forwarding rules.
+- `Revoke-M365AppConsent` – revoke an app's delegated OAuth grants.
+
+### Changed — robustness
+- `Get-TTGraphCollection` now retries on throttling (429) and transient errors with backoff, and shows progress (new `Invoke-TTGraph` wrapper).
+- New default scopes: `BitlockerKey.Read.All`, `DeviceManagementServiceConfig.Read.All`, `MailboxSettings.ReadWrite`, `DelegatedPermissionGrant.ReadWrite.All`.
+
 ## [0.4.0] – 2026-07-10
 
 ### Added — small admin reports
@@ -74,6 +92,7 @@ versioning per [SemVer](https://semver.org/).
 - **Data export** `-Csv` / `-Excel` / `-DataPath` / `-NoHtml` for all reports.
 - **Branding** via `-BrandName` / `-BrandTagline` (e.g. CloudNest365).
 
+[0.5.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.5.0
 [0.4.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.4.0
 [0.3.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.3.0
 [0.2.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.2.0

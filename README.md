@@ -77,6 +77,18 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 
 <sub>Screenshots use demo data. Also included: domains, password policy, registered devices, distribution lists, shared mailboxes.</sub>
 
+### More reports
+
+| Sign-in Analysis | Windows Autopilot |
+|---|---|
+| [![Sign-in Analysis](assets/signin.png)](assets/signin.png) | [![Autopilot](assets/autopilot.png)](assets/autopilot.png) |
+
+**Dynamic Groups** — membership rules & processing state:
+
+[![Dynamic Groups](assets/dynamicgroup.png)](assets/dynamicgroup.png)
+
+<sub>Also included: BitLocker coverage, mailbox sizes, SharePoint sharing. Remediation: `Disable-M365ExternalForwarding`, `Revoke-M365AppConsent` (both `-WhatIf`).</sub>
+
 ## 📦 Requirements
 
 ```powershell
@@ -144,6 +156,14 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Export-M365RegisteredDeviceReport` | Entra-registered/joined devices | no |
 | `Export-M365DistributionListReport` | Distribution lists & empty lists | no |
 | `Export-M365SharedMailboxReport` | Shared mailboxes & Full Access delegates (Exchange) | no |
+| `Export-M365SignInReport` | Recent sign-ins: failed, legacy auth, risky | no |
+| `Export-M365AutopilotReport` | Windows Autopilot devices & profile status | no |
+| `Export-M365DynamicGroupReport` | Dynamic groups & membership rules | no |
+| `Export-M365BitLockerReport` | BitLocker recovery-key escrow coverage | no |
+| `Export-M365MailboxSizeReport` | Mailbox sizes & item counts (Exchange) | no |
+| `Export-M365SharingReport` | SharePoint external sharing posture (SPO) | no |
+| `Disable-M365ExternalForwarding` | Disable external inbox-forwarding rules | **yes** (`-WhatIf`) |
+| `Revoke-M365AppConsent` | Revoke an app's delegated OAuth grants | **yes** (`-WhatIf`) |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 

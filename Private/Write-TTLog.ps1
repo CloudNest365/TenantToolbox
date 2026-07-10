@@ -50,24 +50,64 @@ function Assert-TTGraph {
     }
 }
 
+function Invoke-TTGraph {
+    <#
+    .SYNOPSIS
+        Single Graph request with automatic retry on throttling (429) and transient errors (503/504).
+    .DESCRIPTION
+        Wraps Invoke-MgGraphRequest with exponential backoff. Honors a Retry-After hint when present
+        in the error, otherwise backs off 2, 4, 8, ... seconds (capped). Up to -MaxRetries attempts.
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][string]$Uri,
+        [string]$Method = 'GET',
+        $Body,
+        [int]$MaxRetries = 5
+    )
+    $attempt = 0
+    while ($true) {
+        try {
+            $params = @{ Method = $Method; Uri = $Uri; OutputType = 'PSObject'; ErrorAction = 'Stop' }
+            if ($null -ne $Body) { $params.Body = $Body }
+            return Invoke-MgGraphRequest @params
+        }
+        catch {
+            $msg = "$_"
+            $throttled = $msg -match '429|Too Many Requests|throttl|503|504|Service Unavailable|Gateway Timeout'
+            if (-not $throttled -or $attempt -ge $MaxRetries) { throw }
+            $attempt++
+            $wait = [math]::Min([math]::Pow(2, $attempt), 60)
+            if ($msg -match 'Retry-After[:\s]+(\d+)') { $wait = [int]$Matches[1] }
+            Write-TTLog -Level WARN -Message "Graph throttled/transient - retry $attempt/$MaxRetries in ${wait}s."
+            Start-Sleep -Seconds $wait
+        }
+    }
+}
+
 function Get-TTGraphCollection {
     <#
     .SYNOPSIS
         Fetches a full Graph collection (with paging) via Invoke-MgGraphRequest.
     .DESCRIPTION
-        Robust and independent of which Microsoft.Graph submodules are installed -
-        only needs Microsoft.Graph.Authentication. Follows @odata.nextLink to the end.
+        Robust and independent of which Microsoft.Graph submodules are installed - only needs
+        Microsoft.Graph.Authentication. Follows @odata.nextLink to the end, retries on throttling
+        (429) and shows progress. Use -NoProgress to suppress the progress bar.
     #>
     [CmdletBinding()]
-    param([Parameter(Mandatory)][string]$Uri)
+    param([Parameter(Mandatory)][string]$Uri, [string]$Activity = 'Reading from Microsoft Graph', [switch]$NoProgress)
 
     $items = New-Object System.Collections.Generic.List[object]
     $next = $Uri
+    $page = 0
     while ($next) {
-        $resp = Invoke-MgGraphRequest -Method GET -Uri $next -OutputType PSObject -ErrorAction Stop
+        $resp = Invoke-TTGraph -Uri $next
         if ($resp.value) { foreach ($v in $resp.value) { $items.Add($v) } }
         $next = $resp.'@odata.nextLink'
+        $page++
+        if (-not $NoProgress) { Write-Progress -Activity $Activity -Status "$($items.Count) items (page $page)" }
     }
+    if (-not $NoProgress) { Write-Progress -Activity $Activity -Completed }
     , $items
 }
 
@@ -85,4 +125,18 @@ function Assert-TTExchange {
     # Get-Mailbox without a session throws -> use as a connection test
     try { Get-EXOMailbox -ResultSize 1 -ErrorAction Stop | Out-Null }
     catch { throw "No active Exchange Online connection. Please: Connect-ExchangeOnline" }
+}
+
+function Assert-TTSpo {
+    <#
+    .SYNOPSIS
+        Ensures a SharePoint Online (SPO Management Shell) connection exists.
+    #>
+    [CmdletBinding()]
+    param()
+    if (-not (Get-Command -Name Get-SPOSite -ErrorAction SilentlyContinue)) {
+        throw "Microsoft.Online.SharePoint.PowerShell is missing or not connected. Please: Install-Module Microsoft.Online.SharePoint.PowerShell; then Connect-SPOService -Url https://<tenant>-admin.sharepoint.com"
+    }
+    try { Get-SPOTenant -ErrorAction Stop | Out-Null }
+    catch { throw "No active SharePoint Online connection. Please: Connect-SPOService -Url https://<tenant>-admin.sharepoint.com" }
 }

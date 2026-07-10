@@ -46,7 +46,11 @@ function Connect-TenantToolbox {
             'MailboxSettings.Read',
             'IdentityRiskyUser.Read.All',
             'ServiceHealth.Read.All',
-            'ServiceMessage.Read.All'
+            'ServiceMessage.Read.All',
+            'BitlockerKey.Read.All',
+            'DeviceManagementServiceConfig.Read.All',
+            'MailboxSettings.ReadWrite',
+            'DelegatedPermissionGrant.ReadWrite.All'
         ),
 
         [string]$LogPath,

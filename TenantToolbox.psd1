@@ -1,6 +1,6 @@
 @{
     RootModule        = 'TenantToolbox.psm1'
-    ModuleVersion     = '0.4.0'
+    ModuleVersion     = '0.5.0'
     GUID              = 'b3f1c2a4-7d6e-4c8b-9a2f-1e5d3c7a9b41'
     Author            = 'Reto Binz'
     CompanyName       = 'znib'
@@ -33,6 +33,8 @@
         'Invoke-M365Offboarding',
         'Remove-M365StaleGuests',
         'Remove-M365StaleDevices',
+        'Disable-M365ExternalForwarding',
+        'Revoke-M365AppConsent',
         'Backup-M365ConditionalAccess',
         'Compare-M365Snapshot',
         'Export-M365ConditionalAccessReport',
@@ -58,7 +60,13 @@
         'Export-M365PasswordPolicyReport',
         'Export-M365RegisteredDeviceReport',
         'Export-M365DistributionListReport',
-        'Export-M365SharedMailboxReport'
+        'Export-M365SharedMailboxReport',
+        'Export-M365SignInReport',
+        'Export-M365AutopilotReport',
+        'Export-M365DynamicGroupReport',
+        'Export-M365BitLockerReport',
+        'Export-M365MailboxSizeReport',
+        'Export-M365SharingReport'
     )
     CmdletsToExport   = @()
     VariablesToExport = @()
@@ -68,7 +76,7 @@
         PSData = @{
             Tags         = @('Microsoft365','Graph','EntraID','Administration','Offboarding','TenantToolbox')
             ProjectUri   = ''
-            ReleaseNotes = 'v0.4.0: 44 cmdlets, 28 HTML reports. Adds small admin reports (Teams, domains, service health, message center, password policy, registered devices, distribution lists, shared mailboxes) on top of Intune, security, identity and governance. See CHANGELOG.md.'
+            ReleaseNotes = 'v0.5.0: 52 cmdlets, 34 HTML reports. Adds sign-in analysis, Autopilot, dynamic groups, BitLocker, mailbox sizes, SharePoint sharing; remediation (Disable-M365ExternalForwarding, Revoke-M365AppConsent); and 429-throttling retry with progress. See CHANGELOG.md.'
         }
     }
 }

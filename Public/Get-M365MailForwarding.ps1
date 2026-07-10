@@ -68,6 +68,8 @@ function Get-M365MailForwarding {
                 Action    = ($action -join ', ')
                 External  = $ext
                 Enabled   = [bool]$rule.isEnabled
+                RuleId    = $rule.id
+                UserId    = $u.Id
             }
         }
     }
