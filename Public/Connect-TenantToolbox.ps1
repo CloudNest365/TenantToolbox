@@ -65,6 +65,7 @@ function Connect-TenantToolbox {
         [string]$ClientId,
 
         [Parameter(Mandatory, ParameterSetName = 'Certificate')]
+        [Parameter(ParameterSetName = 'Interactive')]
         [string]$TenantId,
 
         [Parameter(Mandatory, ParameterSetName = 'Certificate')]
@@ -104,11 +105,11 @@ function Connect-TenantToolbox {
         if ($PSCmdlet.ParameterSetName -eq 'Certificate') {
             Connect-MgGraph -ClientId $ClientId -TenantId $TenantId -CertificateThumbprint $CertificateThumbprint -ErrorAction Stop | Out-Null
         }
-        elseif ($UseDeviceCode) {
-            Connect-MgGraph -Scopes $Scopes -UseDeviceCode -ErrorAction Stop | Out-Null
-        }
         else {
-            Connect-MgGraph -Scopes $Scopes -ErrorAction Stop | Out-Null
+            $p = @{ Scopes = $Scopes; ErrorAction = 'Stop' }
+            if ($TenantId) { $p.TenantId = $TenantId }
+            if ($UseDeviceCode) { $p.UseDeviceCode = $true }
+            Connect-MgGraph @p | Out-Null
         }
     }
     catch {

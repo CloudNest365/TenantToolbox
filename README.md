@@ -121,7 +121,8 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 
 | Cmdlet | Purpose | Changes state? |
 |---|---|---|
-| `Connect-TenantToolbox` | Auth (WAM / device code / browser) + log path | – |
+| `Connect-TenantToolbox` | Auth (WAM / device code / browser / certificate) + log path | – |
+| `Set-M365MultiTenant` / `Invoke-M365MultiTenant` | Run read cmdlets across many tenants (MSP) | – |
 | `Get-M365StaleUsers` | Find inactive / never-signed-in users | no |
 | `Get-M365MfaStatus` | MFA / registration status of all users (objects) | no |
 | `Get-M365TenantSummary` | Colored console overview of the tenant's posture | no |
@@ -182,6 +183,23 @@ Export-M365MfaReport -NoHtml           # CSV only (format chosen automatically)
 
 - `-Csv` · `-Excel` · `-DataPath <path>` · `-NoHtml`
 - If `ImportExcel` is missing, `-Excel` falls back to CSV automatically.
+
+## 🏢 Multi-tenant (MSP)
+
+Run any read cmdlets across many tenants and get a `Tenant` column back:
+
+```powershell
+# App-only (recommended): one multi-tenant app + certificate, admin-consented per customer
+Set-M365MultiTenant -TenantId 'contoso.onmicrosoft.com','fabrikam.onmicrosoft.com' `
+    -ClientId <appid> -CertificateThumbprint <thumb>
+
+Invoke-M365MultiTenant { Get-M365MfaStatus | Where-Object { -not $_.MfaRegistered } } |
+    Export-Csv all-users-without-mfa.csv -NoTypeInformation
+
+Invoke-M365MultiTenant { Get-M365StaleUsers -InactiveDays 90 } | Format-Table Tenant, DisplayName, DaysInactive
+```
+
+Without certificate details it signs in interactively (device code) per tenant.
 
 ## 🔐 Required Graph permissions
 

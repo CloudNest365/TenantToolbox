@@ -2,8 +2,9 @@
 # Loads all Private and Public functions and exports only the Public cmdlets.
 
 # --- Module state (script-scoped) ---------------------------------------------
-$script:TTConnected = $false
-$script:TTLogPath   = $null
+$script:TTConnected  = $false
+$script:TTLogPath    = $null
+$script:TTMultiTenant = $null
 
 # --- Load functions -----------------------------------------------------------
 $private = @( Get-ChildItem -Path (Join-Path $PSScriptRoot 'Private') -Filter '*.ps1' -ErrorAction SilentlyContinue )

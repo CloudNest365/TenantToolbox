@@ -4,6 +4,12 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
+## [Unreleased]
+
+### Added — multi-tenant (MSP)
+- `Set-M365MultiTenant` / `Get-M365MultiTenant` / `Invoke-M365MultiTenant` – define a set of tenants and run read cmdlets across all of them; results are tagged with a `Tenant` column. App-only (certificate) or interactive (device code) per tenant.
+- `Connect-TenantToolbox` now accepts `-TenantId` for interactive sign-in too (target a specific tenant).
+
 ## [0.5.1] – 2026-07-10
 
 ### Changed

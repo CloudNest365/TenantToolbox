@@ -16,6 +16,9 @@
 
     FunctionsToExport = @(
         'Connect-TenantToolbox',
+        'Set-M365MultiTenant',
+        'Get-M365MultiTenant',
+        'Invoke-M365MultiTenant',
         'Get-M365StaleUsers',
         'Get-M365MfaStatus',
         'Get-M365TenantSummary',
