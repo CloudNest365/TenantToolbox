@@ -1,0 +1,48 @@
+name: "🐛 Bug Report"
+description: A bug or unexpected behavior in TenantToolbox
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please **do not post real tenant data** (UPNs, IDs, report contents).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected instead.
+      placeholder: "When calling Export-M365PimReport I get ..."
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1. `Connect-TenantToolbox ...`
+        2. `Export-M365... `
+        3. Error: ...
+    validations:
+      required: true
+  - type: input
+    id: cmdlet
+    attributes:
+      label: Affected cmdlet
+      placeholder: "Export-M365MfaReport"
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      value: |
+        - TenantToolbox version:
+        - PowerShell version ($PSVersionTable.PSVersion):
+        - Microsoft.Graph version:
+        - OS:
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error message / log (anonymized)
+      render: text
