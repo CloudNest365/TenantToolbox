@@ -1,6 +1,6 @@
 @{
     RootModule        = 'TenantToolbox.psm1'
-    ModuleVersion     = '0.3.0'
+    ModuleVersion     = '0.4.0'
     GUID              = 'b3f1c2a4-7d6e-4c8b-9a2f-1e5d3c7a9b41'
     Author            = 'Reto Binz'
     CompanyName       = 'znib'
@@ -68,7 +68,7 @@
         PSData = @{
             Tags         = @('Microsoft365','Graph','EntraID','Administration','Offboarding','TenantToolbox')
             ProjectUri   = ''
-            ReleaseNotes = 'v0.3.0: 36 cmdlets. Adds security detection (mail forwarding, enterprise app consent, risky users), identity (admin roles, guests) and governance (licenses, groups) reports on top of the Intune suite. See CHANGELOG.md.'
+            ReleaseNotes = 'v0.4.0: 44 cmdlets, 28 HTML reports. Adds small admin reports (Teams, domains, service health, message center, password policy, registered devices, distribution lists, shared mailboxes) on top of Intune, security, identity and governance. See CHANGELOG.md.'
         }
     }
 }

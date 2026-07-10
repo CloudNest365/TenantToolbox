@@ -4,7 +4,7 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
-## [Unreleased]
+## [0.4.0] – 2026-07-10
 
 ### Added — small admin reports
 - `Export-M365TeamsReport` – Microsoft Teams with owner/member/guest counts and visibility.
@@ -74,6 +74,7 @@ versioning per [SemVer](https://semver.org/).
 - **Data export** `-Csv` / `-Excel` / `-DataPath` / `-NoHtml` for all reports.
 - **Branding** via `-BrandName` / `-BrandTagline` (e.g. CloudNest365).
 
+[0.4.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.4.0
 [0.3.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.3.0
 [0.2.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.1.0
