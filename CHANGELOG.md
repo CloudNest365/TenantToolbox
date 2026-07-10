@@ -4,13 +4,19 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
-## [Unreleased]
+## [0.3.0] – 2026-07-10
 
 ### Added — security detection
 - `Get-M365MailForwarding` + `Export-M365MailForwardingReport` – inbox rules forwarding mail externally (account-compromise signal).
 - `Get-M365EnterpriseApp` + `Export-M365EnterpriseAppReport` – OAuth consents with risky delegated scopes highlighted.
 - `Get-M365RiskyUser` + `Export-M365RiskyUsersReport` – Entra Identity Protection risky users (P2).
 - New default scopes: `MailboxSettings.Read`, `IdentityRiskyUser.Read.All`.
+
+### Added — identity & governance
+- `Get-M365AdminRole` + `Export-M365AdminRoleReport` – all admin role holders cross-referenced with MFA.
+- `Get-M365Guest` + `Export-M365GuestReport` – guest accounts with domain, state and last sign-in.
+- `Get-M365License` + `Export-M365LicenseReport` – license (SKU) assignment: total / assigned / available.
+- `Get-M365Group` + `Export-M365GroupReport` – groups & teams with type, owners and orphan flag.
 
 ## [0.2.0] – 2026-07-10
 
@@ -55,5 +61,6 @@ versioning per [SemVer](https://semver.org/).
 - **Data export** `-Csv` / `-Excel` / `-DataPath` / `-NoHtml` for all reports.
 - **Branding** via `-BrandName` / `-BrandTagline` (e.g. CloudNest365).
 
+[0.3.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.3.0
 [0.2.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CloudNest365/TenantToolbox/releases/tag/v0.1.0

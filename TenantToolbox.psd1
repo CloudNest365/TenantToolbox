@@ -1,6 +1,6 @@
 @{
     RootModule        = 'TenantToolbox.psm1'
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.3.0'
     GUID              = 'b3f1c2a4-7d6e-4c8b-9a2f-1e5d3c7a9b41'
     Author            = 'Reto Binz'
     CompanyName       = 'znib'
@@ -26,6 +26,10 @@
         'Get-M365RiskyUser',
         'Get-M365EnterpriseApp',
         'Get-M365MailForwarding',
+        'Get-M365AdminRole',
+        'Get-M365Guest',
+        'Get-M365License',
+        'Get-M365Group',
         'Invoke-M365Offboarding',
         'Remove-M365StaleGuests',
         'Remove-M365StaleDevices',
@@ -42,7 +46,11 @@
         'Export-M365IntuneDeviceAppReport',
         'Export-M365RiskyUsersReport',
         'Export-M365EnterpriseAppReport',
-        'Export-M365MailForwardingReport'
+        'Export-M365MailForwardingReport',
+        'Export-M365AdminRoleReport',
+        'Export-M365GuestReport',
+        'Export-M365LicenseReport',
+        'Export-M365GroupReport'
     )
     CmdletsToExport   = @()
     VariablesToExport = @()
@@ -52,7 +60,7 @@
         PSData = @{
             Tags         = @('Microsoft365','Graph','EntraID','Administration','Offboarding','TenantToolbox')
             ProjectUri   = ''
-            ReleaseNotes = 'v0.2.0: 22 cmdlets incl. full Intune suite (devices, software inventory, deployment, per-device drilldown, stale-device cleanup), tenant summary, cert auth. See CHANGELOG.md.'
+            ReleaseNotes = 'v0.3.0: 36 cmdlets. Adds security detection (mail forwarding, enterprise app consent, risky users), identity (admin roles, guests) and governance (licenses, groups) reports on top of the Intune suite. See CHANGELOG.md.'
         }
     }
 }

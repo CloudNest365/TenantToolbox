@@ -55,6 +55,16 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 
 [![Risky Users](assets/risky.png)](assets/risky.png)
 
+### Identity & governance
+
+| Admin Roles | Guest Accounts |
+|---|---|
+| [![Admin Roles](assets/adminrole.png)](assets/adminrole.png) | [![Guest Accounts](assets/guest.png)](assets/guest.png) |
+
+| License Assignment | Groups & Teams |
+|---|---|
+| [![License Assignment](assets/license.png)](assets/license.png) | [![Groups](assets/group.png)](assets/group.png) |
+
 <sub>Screenshots use demo data.</sub>
 
 ## 📦 Requirements
@@ -112,6 +122,10 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Get-M365MailForwarding` / `Export-M365MailForwardingReport` | Inbox rules forwarding externally (compromise signal) | no |
 | `Get-M365EnterpriseApp` / `Export-M365EnterpriseAppReport` | OAuth consents & risky app scopes | no |
 | `Get-M365RiskyUser` / `Export-M365RiskyUsersReport` | Identity Protection risky users (P2) | no |
+| `Get-M365AdminRole` / `Export-M365AdminRoleReport` | All admin role holders, MFA status | no |
+| `Get-M365Guest` / `Export-M365GuestReport` | Guest accounts: domain, state, last sign-in | no |
+| `Get-M365License` / `Export-M365LicenseReport` | License assignment: total / assigned / available | no |
+| `Get-M365Group` / `Export-M365GroupReport` | Groups & Teams: type, owners, orphans | no |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 
