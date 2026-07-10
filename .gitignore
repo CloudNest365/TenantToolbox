@@ -1,0 +1,30 @@
+# === Generierte Reports & Daten – NIEMALS committen (enthalten echte Tenant-Daten!) ===
+*.html
+*.csv
+*.xlsx
+*.log
+*.json
+!*.template.json
+
+# Snapshots
+CA-Snapshot*.json
+snap-*.json
+Snapshot-*.json
+
+# PowerShell / Editor
+*.psd1.bak
+.vscode/
+.vs/
+*.user
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Sicherheit – keine Secrets/Zerts
+*.pfx
+*.cer
+*.key
+*.pem
+secrets*.ps1

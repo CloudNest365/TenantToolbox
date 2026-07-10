@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Frage / Diskussion
+    url: https://github.com/CloudNest365/TenantToolbox/discussions
+    about: Allgemeine Fragen und Ideen bitte in den Discussions stellen.
+  - name: 🔒 Sicherheitsproblem
+    url: https://github.com/CloudNest365/TenantToolbox/security/advisories/new
+    about: Sicherheitslücken bitte vertraulich über Security Advisories melden.

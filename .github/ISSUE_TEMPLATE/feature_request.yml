@@ -1,0 +1,36 @@
+name: "✨ Feature Request"
+description: Idee für ein neues Cmdlet, einen Report oder eine Verbesserung
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Welches Problem löst das Feature?
+      placeholder: "Als Admin möchte ich ... damit ..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Vorgeschlagene Lösung
+      description: Wie könnte das Cmdlet / der Report aussehen?
+      placeholder: "Neues Cmdlet Export-M365GuestReport, das ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Art
+      options:
+        - Neues Report-Cmdlet
+        - Neues Action-Cmdlet
+        - Verbesserung bestehendes Cmdlet
+        - Engine / Infrastruktur
+        - Dokumentation
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativen / Kontext

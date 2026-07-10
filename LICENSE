@@ -1,0 +1,39 @@
+TenantToolbox
+Copyright (c) 2026 CloudNest365 (Reto Binz)
+
+This work is licensed under the
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+(CC BY-NC-ND 4.0).
+
+Full legal text:
+https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+Human-readable summary:
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+SPDX-License-Identifier: CC-BY-NC-ND-4.0
+
+----------------------------------------------------------------------
+What this means (plain language – the legal text above governs):
+
+  You ARE free to:
+    - Use and run this software for private and internal purposes.
+    - Share it unchanged, as long as you give appropriate credit and
+      link back to this repository.
+
+  You MAY NOT:
+    - Use it for commercial purposes.
+    - Distribute modified versions or re-publish it as your own
+      (e.g. under a different name or to a package gallery).
+    - Remove author attribution or these notices.
+
+  Attribution:
+    "TenantToolbox by CloudNest365 – https://github.com/CloudNest365/TenantToolbox"
+
+  Commercial licensing:
+    For any commercial use, please contact CloudNest365 to arrange a
+    separate license.
+----------------------------------------------------------------------
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED. THE AUTHORS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY ARISING FROM THE USE OF THIS SOFTWARE.

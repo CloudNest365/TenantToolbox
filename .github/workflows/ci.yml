@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  analyze:
+    name: Lint & Import
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PSScriptAnalyzer installieren
+        shell: pwsh
+        run: Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+
+      - name: Script-Analyse
+        shell: pwsh
+        run: |
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error,Warning
+          $results | Format-Table -AutoSize
+          if ($results | Where-Object Severity -eq 'Error') {
+            Write-Error "PSScriptAnalyzer hat Fehler gefunden."
+            exit 1
+          }
+
+      - name: Modul-Import testen
+        shell: pwsh
+        run: |
+          Import-Module ./TenantToolbox.psd1 -Force -ErrorAction Stop
+          $cmds = Get-Command -Module TenantToolbox
+          Write-Host "Exportierte Cmdlets: $($cmds.Count)"
+          $cmds | Select-Object Name | Format-Table -AutoSize
+          if ($cmds.Count -lt 1) { Write-Error "Keine Cmdlets exportiert."; exit 1 }
