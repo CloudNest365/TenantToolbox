@@ -74,8 +74,9 @@
 
     PrivateData = @{
         PSData = @{
-            Tags         = @('Microsoft365','Graph','EntraID','Administration','Offboarding','TenantToolbox')
-            ProjectUri   = ''
+            Tags         = @('Microsoft365','Graph','EntraID','Intune','Security','Reporting','Administration','TenantToolbox')
+            ProjectUri   = 'https://github.com/CloudNest365/TenantToolbox'
+            LicenseUri   = 'https://github.com/CloudNest365/TenantToolbox/blob/main/LICENSE'
             ReleaseNotes = 'v0.5.0: 52 cmdlets, 34 HTML reports. Adds sign-in analysis, Autopilot, dynamic groups, BitLocker, mailbox sizes, SharePoint sharing; remediation (Disable-M365ExternalForwarding, Revoke-M365AppConsent); and 429-throttling retry with progress. See CHANGELOG.md.'
         }
     }
