@@ -27,6 +27,18 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 - **Data export** to CSV/Excel and **change tracking** via CA snapshots.
 - **Branding** — every report customizable via `-BrandName`.
 
+## 📸 Screenshots
+
+| Security Scorecard | MFA Status |
+|---|---|
+| [![Security Scorecard](assets/scorecard.png)](assets/scorecard.png) | [![MFA Status Report](assets/mfa.png)](assets/mfa.png) |
+
+**Privileged Roles (PIM)** — permanent vs. eligible vs. activated:
+
+[![PIM Report](assets/pim.png)](assets/pim.png)
+
+<sub>Screenshots use demo data.</sub>
+
 ## 📦 Requirements
 
 ```powershell
