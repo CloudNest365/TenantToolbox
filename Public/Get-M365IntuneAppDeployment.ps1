@@ -23,7 +23,16 @@ function Get-M365IntuneAppDeployment {
     Assert-TTGraph
     Write-TTLog -Level INFO -Message "Reading Intune app deployments ..."
 
-    $apps = Get-TTGraphCollection "https://graph.microsoft.com/v1.0/deviceAppManagement/mobileApps?`$expand=assignments&`$top=100"
+    try {
+        $apps = Get-TTGraphCollection "https://graph.microsoft.com/v1.0/deviceAppManagement/mobileApps?`$expand=assignments&`$top=100"
+    }
+    catch {
+        if ("$_" -match 'Forbidden|403') {
+            Write-Warning "Access denied. This report needs the 'DeviceManagementApps.Read.All' scope. Reconnect: Connect-TenantToolbox -UseDeviceCode"
+        }
+        else { Write-Warning "Could not read mobileApps: $_" }
+        return
+    }
 
     foreach ($a in $apps) {
         $assignCount = @($a.assignments).Count
