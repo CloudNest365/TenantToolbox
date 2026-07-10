@@ -33,9 +33,9 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 |---|---|
 | [![Security Scorecard](assets/scorecard.png)](assets/scorecard.png) | [![MFA Status Report](assets/mfa.png)](assets/mfa.png) |
 
-**Privileged Roles (PIM)** — permanent vs. eligible vs. activated:
-
-[![PIM Report](assets/pim.png)](assets/pim.png)
+| Privileged Roles (PIM) | Intune Devices |
+|---|---|
+| [![PIM Report](assets/pim.png)](assets/pim.png) | [![Intune Device Report](assets/intune.png)](assets/intune.png) |
 
 <sub>Screenshots use demo data.</sub>
 
@@ -82,6 +82,8 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Export-M365AppSecretReport` | Expiring/expired app secrets & certificates | no |
 | `Export-M365SecurityScorecard` | Overall grade A–F across multiple signals | no |
 | `Export-M365PimReport` | Privileged roles: permanent vs. eligible vs. activated | no |
+| `Get-M365IntuneDevice` | Intune-managed devices (objects) | no |
+| `Export-M365IntuneDeviceReport` | Intune devices: compliance, sync, encryption | no |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 

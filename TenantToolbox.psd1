@@ -19,6 +19,7 @@
         'Get-M365StaleUsers',
         'Get-M365MfaStatus',
         'Get-M365TenantSummary',
+        'Get-M365IntuneDevice',
         'Invoke-M365Offboarding',
         'Remove-M365StaleGuests',
         'Backup-M365ConditionalAccess',
@@ -27,7 +28,8 @@
         'Export-M365MfaReport',
         'Export-M365AppSecretReport',
         'Export-M365SecurityScorecard',
-        'Export-M365PimReport'
+        'Export-M365PimReport',
+        'Export-M365IntuneDeviceReport'
     )
     CmdletsToExport   = @()
     VariablesToExport = @()
