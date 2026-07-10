@@ -1,6 +1,6 @@
 @{
     RootModule        = 'TenantToolbox.psm1'
-    ModuleVersion     = '0.1.0'
+    ModuleVersion     = '0.2.0'
     GUID              = 'b3f1c2a4-7d6e-4c8b-9a2f-1e5d3c7a9b41'
     Author            = 'Reto Binz'
     CompanyName       = 'znib'
@@ -46,7 +46,7 @@
         PSData = @{
             Tags         = @('Microsoft365','Graph','EntraID','Administration','Offboarding','TenantToolbox')
             ProjectUri   = ''
-            ReleaseNotes = 'First release: 11 cmdlets for M365 tenant administration with interactive HTML reports.'
+            ReleaseNotes = 'v0.2.0: 22 cmdlets incl. full Intune suite (devices, software inventory, deployment, per-device drilldown, stale-device cleanup), tenant summary, cert auth. See CHANGELOG.md.'
         }
     }
 }
