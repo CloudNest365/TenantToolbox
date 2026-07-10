@@ -4,6 +4,11 @@ All notable changes to this project are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning per [SemVer](https://semver.org/).
 
+## [0.5.1] – 2026-07-10
+
+### Changed
+- Author/company/copyright set to CloudNest365 (removed personal name); published to the PowerShell Gallery.
+
 ## [0.5.0] – 2026-07-10
 
 ### Added — new reports

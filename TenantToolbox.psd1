@@ -1,10 +1,10 @@
 @{
     RootModule        = 'TenantToolbox.psm1'
-    ModuleVersion     = '0.5.0'
+    ModuleVersion     = '0.5.1'
     GUID              = 'b3f1c2a4-7d6e-4c8b-9a2f-1e5d3c7a9b41'
-    Author            = 'Reto Binz'
-    CompanyName       = 'znib'
-    Copyright         = '(c) Reto Binz. All rights reserved.'
+    Author            = 'CloudNest365'
+    CompanyName       = 'CloudNest365'
+    Copyright         = '(c) 2026 CloudNest365. All rights reserved.'
     Description       = 'A gallery of small, sharply-scoped PowerShell cmdlets for Microsoft 365 tenant administration. Each cmdlet does exactly one job - with a unified auth, log and -WhatIf frame.'
     PowerShellVersion = '7.2'
 
