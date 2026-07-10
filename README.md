@@ -37,9 +37,13 @@ Each cmdlet does exactly *one* job — with a unified auth/log/`-WhatIf` frame a
 |---|---|
 | [![PIM Report](assets/pim.png)](assets/pim.png) | [![Intune Device Report](assets/intune.png)](assets/intune.png) |
 
-**Intune Software Inventory** — apps, versions and device counts:
+| Intune Software Inventory | Intune App Deployment |
+|---|---|
+| [![Intune Software Inventory](assets/intuneapp.png)](assets/intuneapp.png) | [![Intune App Deployment](assets/deployment.png)](assets/deployment.png) |
 
-[![Intune Software Inventory](assets/intuneapp.png)](assets/intuneapp.png)
+**Per-device app drilldown** — every app installed on a single device:
+
+[![Per-device app drilldown](assets/deviceapp.png)](assets/deviceapp.png)
 
 <sub>Screenshots use demo data.</sub>
 
@@ -90,6 +94,11 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Export-M365IntuneDeviceReport` | Intune devices: compliance, sync, encryption | no |
 | `Get-M365IntuneApp` | Detected software inventory (objects) | no |
 | `Export-M365IntuneAppReport` | Software inventory: app, version, device count | no |
+| `Get-M365IntuneAppDeployment` | App assignment & install status (objects) | no |
+| `Export-M365IntuneAppDeploymentReport` | App deployment: assigned / installed / failed | no |
+| `Get-M365IntuneDeviceApp` | Apps installed on a single device (objects) | no |
+| `Export-M365IntuneDeviceAppReport` | Per-device app drilldown | no |
+| `Remove-M365StaleDevices` | Find & delete stale Intune devices | **yes** (`-WhatIf`) |
 
 Full docs in the **[Wiki](https://github.com/CloudNest365/TenantToolbox/wiki)**.
 

@@ -28,7 +28,7 @@ function Get-M365IntuneDevice {
     Assert-TTGraph
     Write-TTLog -Level INFO -Message "Reading Intune managed devices ..."
 
-    $sel = 'deviceName,userDisplayName,userPrincipalName,operatingSystem,osVersion,complianceState,managedDeviceOwnerType,lastSyncDateTime,isEncrypted,model,manufacturer'
+    $sel = 'id,deviceName,userDisplayName,userPrincipalName,operatingSystem,osVersion,complianceState,managedDeviceOwnerType,lastSyncDateTime,isEncrypted,model,manufacturer'
     $uri = "https://graph.microsoft.com/v1.0/deviceManagement/managedDevices?`$select=$sel&`$top=100"
     $devices = Get-TTGraphCollection $uri
 
@@ -48,6 +48,7 @@ function Get-M365IntuneDevice {
         }
 
         [pscustomobject]@{
+            DeviceId      = $d.id
             DeviceName    = $d.deviceName
             User          = $d.userDisplayName
             UPN           = $d.userPrincipalName

@@ -41,7 +41,8 @@ function Connect-TenantToolbox {
             'Application.Read.All',
             'UserAuthenticationMethod.Read.All',
             'RoleManagement.Read.Directory',
-            'DeviceManagementManagedDevices.Read.All'
+            'DeviceManagementManagedDevices.ReadWrite.All',
+            'DeviceManagementApps.Read.All'
         ),
 
         [string]$LogPath,
