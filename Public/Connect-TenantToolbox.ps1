@@ -15,13 +15,23 @@ function Connect-TenantToolbox {
         code to enter at microsoft.com/devicelogin.
     .PARAMETER UseBrowser
         Regular OAuth sign-in in the default browser (with SSO) instead of the WAM popup.
+    .PARAMETER ClientId
+        App (client) id for unattended certificate authentication (app-only).
+    .PARAMETER TenantId
+        Tenant id for certificate authentication.
+    .PARAMETER CertificateThumbprint
+        Thumbprint of a certificate in the user's cert store. Together with -ClientId and
+        -TenantId this signs in app-only (no interaction) - ideal for scheduled/unattended runs.
     .EXAMPLE
         Connect-TenantToolbox -LogPath .\tenanttoolbox.log
     .EXAMPLE
         Connect-TenantToolbox -UseDeviceCode
+    .EXAMPLE
+        Connect-TenantToolbox -ClientId <appid> -TenantId <tenantid> -CertificateThumbprint <thumb>
     #>
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Interactive')]
     param(
+        [Parameter(ParameterSetName = 'Interactive')]
         [string[]]$Scopes = @(
             'User.ReadWrite.All',
             'Group.ReadWrite.All',
@@ -35,9 +45,20 @@ function Connect-TenantToolbox {
 
         [string]$LogPath,
 
+        [Parameter(ParameterSetName = 'Interactive')]
         [switch]$UseDeviceCode,
 
-        [switch]$UseBrowser
+        [Parameter(ParameterSetName = 'Interactive')]
+        [switch]$UseBrowser,
+
+        [Parameter(Mandatory, ParameterSetName = 'Certificate')]
+        [string]$ClientId,
+
+        [Parameter(Mandatory, ParameterSetName = 'Certificate')]
+        [string]$TenantId,
+
+        [Parameter(Mandatory, ParameterSetName = 'Certificate')]
+        [string]$CertificateThumbprint
     )
 
     if (-not (Get-Module -ListAvailable -Name Microsoft.Graph.Authentication)) {
@@ -70,7 +91,10 @@ function Connect-TenantToolbox {
     }
 
     try {
-        if ($UseDeviceCode) {
+        if ($PSCmdlet.ParameterSetName -eq 'Certificate') {
+            Connect-MgGraph -ClientId $ClientId -TenantId $TenantId -CertificateThumbprint $CertificateThumbprint -ErrorAction Stop | Out-Null
+        }
+        elseif ($UseDeviceCode) {
             Connect-MgGraph -Scopes $Scopes -UseDeviceCode -ErrorAction Stop | Out-Null
         }
         else {
@@ -87,13 +111,14 @@ function Connect-TenantToolbox {
 
     # Only report as connected if a context really exists.
     $ctx = Get-MgContext
-    if (-not $ctx -or -not $ctx.Account) {
+    $identity = if ($ctx.Account) { $ctx.Account } elseif ($ctx.AppName) { "$($ctx.AppName) (app-only)" } else { $null }
+    if (-not $ctx -or -not $identity) {
         $script:TTConnected = $false
         Write-Host "No valid session obtained. Use:  Connect-TenantToolbox -UseDeviceCode" -ForegroundColor Yellow
         return
     }
 
     $script:TTConnected = $true
-    Write-TTLog -Level INFO -Message "Connected to tenant '$($ctx.TenantId)' as '$($ctx.Account)'."
-    Write-Host "TenantToolbox connected: $($ctx.Account) ($($ctx.TenantId))" -ForegroundColor Green
+    Write-TTLog -Level INFO -Message "Connected to tenant '$($ctx.TenantId)' as '$identity'."
+    Write-Host "TenantToolbox connected: $identity ($($ctx.TenantId))" -ForegroundColor Green
 }

@@ -60,7 +60,9 @@ Invoke-M365Offboarding -User marta@contoso.ch -WhatIf
 | `Connect-TenantToolbox` | Auth (WAM / device code / browser) + log path | – |
 | `Get-M365StaleUsers` | Find inactive / never-signed-in users | no |
 | `Get-M365MfaStatus` | MFA / registration status of all users (objects) | no |
+| `Get-M365TenantSummary` | Colored console overview of the tenant's posture | no |
 | `Invoke-M365Offboarding` | Leaver chain (Entra + Exchange + OneDrive) | **yes** (`-WhatIf`) |
+| `Remove-M365StaleGuests` | Find & remove inactive guest accounts | **yes** (`-WhatIf`) |
 | `Backup-M365ConditionalAccess` | Back up CA policies as a JSON snapshot | no |
 | `Compare-M365Snapshot` | Compare two snapshots → HTML diff | no (local) |
 | `Export-M365ConditionalAccessReport` | CA policies with impact hints | no |

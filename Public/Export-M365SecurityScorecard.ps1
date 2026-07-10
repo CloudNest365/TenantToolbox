@@ -94,6 +94,16 @@ function Export-M365SecurityScorecard {
     }
     catch { Write-TTLog -Level WARN -Message "App secret signal skipped: $_" }
 
+    # 7) Permanent Global Admins (PIM)
+    try {
+        $base = 'https://graph.microsoft.com/v1.0/roleManagement/directory'
+        $active = Get-TTGraphCollection "$base/roleAssignmentScheduleInstances?`$expand=roleDefinition&`$top=100"
+        $permGa = @($active | Where-Object { $_.assignmentType -eq 'Assigned' -and $_.roleDefinition.displayName -eq 'Global Administrator' }).Count
+        $st = if ($permGa -le 2) { 'pass' } elseif ($permGa -le 5) { 'warn' } else { 'fail' }
+        $checks += New-Check 'Permanent Global Admins' $st "$permGa" $(if ($permGa -le 2) { 'Few standing Global Admins (break-glass). Good.' } else { "$permGa permanent Global Admins - prefer eligible (PIM/JIT) assignments." })
+    }
+    catch { Write-TTLog -Level WARN -Message "PIM signal skipped: $_" }
+
     # --- Overall grade -------------------------------------------------------
     $overall = if ($checks.Count) { [math]::Round(100 * (($checks | Measure-Object Score -Sum).Sum) / $checks.Count) } else { 0 }
     $grade = if ($overall -ge 90) { 'A' } elseif ($overall -ge 80) { 'B' } elseif ($overall -ge 70) { 'C' } elseif ($overall -ge 60) { 'D' } else { 'F' }
